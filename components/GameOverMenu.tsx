@@ -31,7 +31,7 @@ const GameOverMenu: React.FC<GameOverMenuProps> = ({ score, onRestart, onMenu, m
        subtitle = "MISSION COMPLETE";
   } else {
       title = "GAME OVER";
-      subtitle = `TOTAL SCORE: ${p1Score + p2Score}`;
+      subtitle = `TOTAL SCORE: ${p1Score + (mode === GameMode.ONE_PLAYER ? 0 : p2Score)}`;
   }
 
   return (
@@ -43,13 +43,15 @@ const GameOverMenu: React.FC<GameOverMenuProps> = ({ score, onRestart, onMenu, m
 
       <div className="flex gap-12 text-4xl font-orbitron mb-12">
         <div className="text-center">
-            <div className="text-sm text-slate-500 tracking-widest mb-2">P1 SCORE</div>
+            <div className="text-sm text-slate-500 tracking-widest mb-2">{mode === GameMode.ONE_PLAYER ? 'SCORE' : 'P1 SCORE'}</div>
             <div className="text-cyan-400 font-black">{p1Score}</div>
         </div>
-        <div className="text-center">
-            <div className="text-sm text-slate-500 tracking-widest mb-2">P2 SCORE</div>
-            <div className="text-fuchsia-400 font-black">{p2Score}</div>
-        </div>
+        {mode !== GameMode.ONE_PLAYER && (
+            <div className="text-center">
+                <div className="text-sm text-slate-500 tracking-widest mb-2">P2 SCORE</div>
+                <div className="text-fuchsia-400 font-black">{p2Score}</div>
+            </div>
+        )}
       </div>
 
       <div className="flex flex-col md:flex-row gap-4">

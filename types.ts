@@ -1,5 +1,6 @@
 export enum GameMode {
   MENU = 'MENU',
+  ONE_PLAYER = 'ONE_PLAYER',
   VERSUS = 'VERSUS',
   COOP = 'COOP',
   COOP_4P = 'COOP_4P',
@@ -27,10 +28,12 @@ export interface Paddle extends Entity {
   isSuperCharged: boolean;
   ammo: number;
   superMeter: number; // 0-100
-  zone: 'left' | 'right';
+  zone: 'left' | 'right' | 'full';
   width: number;
   height: number;
   rocketCooldown: number;
+  dashCooldown: number;
+  isDashing: boolean;
 }
 
 export interface Ball extends Entity {
@@ -43,7 +46,7 @@ export interface Ball extends Entity {
 
 export interface Brick extends Entity {
   hp: number;
-  type: 'normal' | 'explosive' | 'hard' | 'regen';
+  type: 'normal' | 'explosive' | 'hard' | 'regen' | 'shield';
   value: number;
   maxHp: number;
 }
@@ -72,6 +75,7 @@ export interface Boss extends Entity {
   maxHp: number;
   phase: number;
   attackTimer: number;
+  pattern: 'idle' | 'spray' | 'laser' | 'burst';
 }
 
 export interface GameState {
@@ -99,6 +103,7 @@ export interface InputState {
   down: boolean;
   left: boolean;
   right: boolean;
-  action: boolean; // Fire / Select
+  action: boolean; // Fire
+  dash: boolean;   // Secondary action
   start: boolean; // Pause / Menu
 }

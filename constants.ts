@@ -4,8 +4,14 @@ export const CANVAS_HEIGHT = 800;
 export const PADDLE_WIDTH = 100;
 export const PADDLE_HEIGHT = 20;
 export const PADDLE_SPEED = 8;
+export const PADDLE_DASH_SPEED = 25;
+export const DASH_DURATION = 0.15;
+export const DASH_COOLDOWN = 1.5;
+
 export const BALL_SPEED_BASE = 6;
 export const BALL_RADIUS = 8;
+export const SUPER_BALL_SPEED_MULT = 1.5;
+export const SUPER_BALL_DAMAGE = 3;
 
 export const BRICK_ROWS = 6;
 export const BRICK_COLS = 10;
@@ -23,9 +29,12 @@ export const COLORS = {
   P3: '#00ff00', // Lime
   P4: '#ffff00', // Yellow
   BALL: '#ffffff',
+  BALL_SUPER: '#ff0055',
   BRICK_GRADIENT_START: '#ff0000',
   BRICK_GRADIENT_END: '#8a2be2',
   BOSS: '#ff3333',
+  BOSS_PHASE_2: '#ff8800',
+  BOSS_PHASE_3: '#aa00ff',
   TEXT_NEON: '#00ffde',
 };
 
@@ -40,6 +49,7 @@ export const KEYS = {
     LEFT: ['KeyA'],
     RIGHT: ['KeyD'],
     ACTION: ['Space', 'ShiftLeft'],
+    DASH: ['KeyQ', 'ControlLeft'],
   },
   P2: {
     UP: ['ArrowUp'],
@@ -47,5 +57,6 @@ export const KEYS = {
     LEFT: ['ArrowLeft'],
     RIGHT: ['ArrowRight'],
     ACTION: ['Enter', 'ShiftRight'],
+    DASH: ['Slash', 'ControlRight', 'Period'],
   },
 };

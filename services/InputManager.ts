@@ -31,6 +31,7 @@ class InputManager {
       left: false,
       right: false,
       action: false,
+      dash: false,
       start: false,
     };
 
@@ -41,12 +42,14 @@ class InputManager {
       if (KEYS.P1.LEFT.some(k => this.keysPressed.has(k))) input.left = true;
       if (KEYS.P1.RIGHT.some(k => this.keysPressed.has(k))) input.right = true;
       if (KEYS.P1.ACTION.some(k => this.keysPressed.has(k))) input.action = true;
+      if (KEYS.P1.DASH.some(k => this.keysPressed.has(k))) input.dash = true;
     } else if (playerId === 1) {
       if (KEYS.P2.UP.some(k => this.keysPressed.has(k))) input.up = true;
       if (KEYS.P2.DOWN.some(k => this.keysPressed.has(k))) input.down = true;
       if (KEYS.P2.LEFT.some(k => this.keysPressed.has(k))) input.left = true;
       if (KEYS.P2.RIGHT.some(k => this.keysPressed.has(k))) input.right = true;
       if (KEYS.P2.ACTION.some(k => this.keysPressed.has(k))) input.action = true;
+      if (KEYS.P2.DASH.some(k => this.keysPressed.has(k))) input.dash = true;
     }
 
     // Map common keys for everyone (Start/Pause)
@@ -66,6 +69,7 @@ class InputManager {
 
       // Buttons: 0 (A), 1 (B), 9 (Start)
       if (gp.buttons[0].pressed || gp.buttons[7].pressed) input.action = true; // A or RT
+      if (gp.buttons[1].pressed || gp.buttons[6].pressed) input.dash = true;   // B or LT
       if (gp.buttons[9].pressed) input.start = true;
       
       // D-Pad

@@ -8,6 +8,7 @@ interface MainMenuProps {
 
 const MainMenu: React.FC<MainMenuProps> = ({ onStart }) => {
   const modes = [
+    { mode: GameMode.ONE_PLAYER, label: 'SOLO ARCADE', desc: 'Classic 1-Player Experience.' },
     { mode: GameMode.VERSUS, label: 'VERSUS', desc: '3 min timer. High score wins.' },
     { mode: GameMode.COOP, label: 'CO-OP', desc: 'Share the board. Defend together.' },
     { mode: GameMode.COOP_4P, label: '4-PLAYER CO-OP', desc: 'Chaos with 4 players.' },
